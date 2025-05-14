@@ -6,15 +6,15 @@ pipeline {
                 docker {
                     image 'maven:3.8.8-eclipse-temurin-17'
                 }
-            }            
+            }
             steps {
                 sh 'mvn clean package -DskipTests -B -ntp'
             }
-        }      
+        }
         stage('Deploy with jboss-cli') {
             agent any
             environment {
-                AMAZON_LINUX_IP = '54.190.16.126'
+                AMAZON_LINUX_IP = '35.89.125.148'
                 JBOSS_CREDENTIALS = credentials('jboss-credentials')
             }            
             steps {
