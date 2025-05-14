@@ -49,8 +49,8 @@ pipeline {
                         sh 'env | sort'
                         sh 'ansible --version'
                         sh 'ansible-galaxy --version'
-                        sh 'ansible-galaxy collection install community.general'
-                        sh 'ansible-playbook -i hosts deploy_jboss.yml -vvv'
+                        // sh 'ansible-galaxy collection install community.general'
+                        sh 'ansible-playbook -i hosts deploy_jboss.yml'
                     }
                 }
             }
