@@ -22,7 +22,7 @@
   #       --password={{ lookup('ansible.builtin.env', 'JBOSS_CREDENTIALS_PSW') }} \
   #       -c --command="deploy /home/ec2-user/applicationPetstore.war"
 
-  - name: Set permissions on deploy dir
+  - name: Set permissions on deploy directory
     become: true
     ansible.builtin.file:
       path: /home/ec2-user/jboss-eap-7.4/standalone/deployments
