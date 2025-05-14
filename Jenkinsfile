@@ -48,7 +48,7 @@ pipeline {
                     sshagent (credentials: ['amazon-linux-private-key']){
                         sh 'env | sort'
                         sh 'ansible --version'
-                        // sh 'ansible-galaxy --version'
+                        sh 'ansible-galaxy --version'
                         sh 'ansible-playbook -i hosts deploy_jboss.yml'
                     }
                 }
