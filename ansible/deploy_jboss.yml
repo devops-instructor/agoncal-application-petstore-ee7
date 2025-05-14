@@ -8,9 +8,9 @@
       src: "{{ lookup('ansible.builtin.env', 'WORKSPACE') }}/target/applicationPetstore.war"
       dest: /home/ec2-user
 
-  - name: Undeploy war with jboss-cli.sh
-    ansible.builtin.shell: |
-      /home/ec2-user/jboss-eap-7.4/bin/jboss-cli.sh -c --command="undeploy applicationPetstore.war"
+  # - name: Undeploy war with jboss-cli.sh
+  #   ansible.builtin.shell: |
+  #     /home/ec2-user/jboss-eap-7.4/bin/jboss-cli.sh -c --command="undeploy applicationPetstore.war"
 
   - name: Deploy war with jboss-cli.sh
     ansible.builtin.shell: |
