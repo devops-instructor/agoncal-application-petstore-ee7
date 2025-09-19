@@ -42,7 +42,8 @@ pipeline {
                 }
             }
             environment {
-                ANSIBLE_HOST_KEY_CHECKING = "False"
+                // ANSIBLE_NOCOLOR = 'True'
+                ANSIBLE_HOST_KEY_CHECKING = 'False'
                 JBOSS_CREDENTIALS = credentials('jboss-credentials')
             }
             options { skipDefaultCheckout() }
