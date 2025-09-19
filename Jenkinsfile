@@ -11,7 +11,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'mvn clean package -DskipTests -B -ntp'
+                sh 'mvn clean package -Dstyle.color=always -DskipTests -B -ntp'
             }
         }
         // stage('Deploy with jboss-cli') {
