@@ -8,34 +8,34 @@
       src: "{{ lookup('ansible.builtin.env', 'WORKSPACE') }}/target/applicationPetstore.war"
       dest: /home/ec2-user
 
-  # - name: Undeploy war with jboss-cli.sh (with credentials)
-  #   ansible.builtin.shell: |
-  #     /home/ec2-user/jboss-eap-7.4/bin/jboss-cli.sh \
-  #       --user={{ lookup('ansible.builtin.env', 'JBOSS_CREDENTIALS_USR') }} \
-  #       --password={{ lookup('ansible.builtin.env', 'JBOSS_CREDENTIALS_PSW') }} \
-  #       -c --command="undeploy applicationPetstore.war"
+  - name: Undeploy war with jboss-cli.sh (with credentials)
+    ansible.builtin.shell: |
+      /home/ec2-user/jboss-eap-7.4/bin/jboss-cli.sh \
+        --user={{ lookup('ansible.builtin.env', 'JBOSS_CREDENTIALS_USR') }} \
+        --password={{ lookup('ansible.builtin.env', 'JBOSS_CREDENTIALS_PSW') }} \
+        -c --command="undeploy applicationPetstore.war"
 
-  # - name: Deploy war with jboss-cli.sh (with credentials)
-  #   ansible.builtin.shell: |
-  #     /home/ec2-user/jboss-eap-7.4/bin/jboss-cli.sh \
-  #       --user={{ lookup('ansible.builtin.env', 'JBOSS_CREDENTIALS_USR') }} \
-  #       --password={{ lookup('ansible.builtin.env', 'JBOSS_CREDENTIALS_PSW') }} \
-  #       -c --command="deploy /home/ec2-user/applicationPetstore.war"
+  - name: Deploy war with jboss-cli.sh (with credentials)
+    ansible.builtin.shell: |
+      /home/ec2-user/jboss-eap-7.4/bin/jboss-cli.sh \
+        --user={{ lookup('ansible.builtin.env', 'JBOSS_CREDENTIALS_USR') }} \
+        --password={{ lookup('ansible.builtin.env', 'JBOSS_CREDENTIALS_PSW') }} \
+        -c --command="deploy /home/ec2-user/applicationPetstore.war"
 
-  - name: Set permissions on deploy directory
-    become: true
-    ansible.builtin.file:
-      path: /home/ec2-user/jboss-eap-7.4/standalone/deployments
-      owner: ec2-user
-      group: ec2-user
-      mode: '0755'
+  # - name: Set permissions on deploy directory
+  #   become: true
+  #   ansible.builtin.file:
+  #     path: /home/ec2-user/jboss-eap-7.4/standalone/deployments
+  #     owner: ec2-user
+  #     group: ec2-user
+  #     mode: '0755'
 
-  - name: Deploy war with module jboss
-    community.general.jboss:
-      src: /home/ec2-user/applicationPetstore.war
-      deploy_path: /home/ec2-user/jboss-eap-7.4/standalone/deployments
-      deployment: applicationPetstore.war
-      state: present
+  # - name: Deploy war with module jboss
+  #   community.general.jboss:
+  #     src: /home/ec2-user/applicationPetstore.war
+  #     deploy_path: /home/ec2-user/jboss-eap-7.4/standalone/deployments
+  #     deployment: applicationPetstore.war
+  #     state: present
 
   - name: Remove war
     ansible.builtin.file:
