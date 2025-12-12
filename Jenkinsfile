@@ -17,7 +17,7 @@ pipeline {
         stage('Deploy with jboss-cli') {
             agent any
             environment {
-                AMAZON_LINUX_IP = '18.236.236.247'
+                AMAZON_LINUX_IP = '34.222.81.97'
                 JBOSS_CREDENTIALS = credentials('jboss-credentials')
             }            
             steps {
