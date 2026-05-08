@@ -26,7 +26,7 @@ pipeline {
                     sh '''
                         scp -o StrictHostKeyChecking=no target/applicationPetstore.war ec2-user@$AMAZON_LINUX_IP:/home/ec2-user
                         
-                        # ssh ec2-user@$AMAZON_LINUX_IP "~/jboss-eap-7.4/bin/jboss-cli.sh --user=$JBOSS_CREDENTIALS_USR --password=$JBOSS_CREDENTIALS_PSW -c --command='undeploy applicationPetstore.war'"
+                        ssh ec2-user@$AMAZON_LINUX_IP "~/jboss-eap-7.4/bin/jboss-cli.sh --user=$JBOSS_CREDENTIALS_USR --password=$JBOSS_CREDENTIALS_PSW -c --command='undeploy applicationPetstore.war'"
                         
                         ssh ec2-user@$AMAZON_LINUX_IP "~/jboss-eap-7.4/bin/jboss-cli.sh --user=$JBOSS_CREDENTIALS_USR --password=$JBOSS_CREDENTIALS_PSW -c --command='deploy /home/ec2-user/applicationPetstore.war'"
                         
