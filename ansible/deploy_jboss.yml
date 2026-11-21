@@ -1,5 +1,6 @@
 ---
-- hosts: server1
+- name: Deploy applicationPetstore.war to JBoss
+  hosts: server1
   remote_user: ec2-user
 
   tasks:
